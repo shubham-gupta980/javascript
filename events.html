@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+    </style>
+<body style="background-color: gray;">
+    <h1>Amazing photos</h1>
+    <div>
+        <ul id="images">
+            <li><img width="200px" height="200px" id="bitch" src="https://images.pexels.com/photos/13397143/pexels-photo-13397143.jpeg" alt="photoshop"></li>
+            <li><img width="200px" height="200px"id="library" src="https://images.pexels.com/photos/33705332/pexels-photo-33705332.jpeg" alt=""></li>
+            <li><img width="200px" height="200px" id="flower" src="https://images.pexels.com/photos/33145845/pexels-photo-33145845.jpeg" alt=""></li>
+            <li><img width="200px" height="200px" id="cat"  src="https://images.pexels.com/photos/13157845/pexels-photo-13157845.jpeg" alt=""></li>
+            <!-- onclick="alert('cat')" this is not a fesable approach jb scale krega application toh bahut problem hoge -->
+
+            <li><a style="color: aliceblue" href="https://www.google.com/" id="google">Google</a></li>
+        </ul>
+
+        <button id="btn">Hello js</button>
+        <p id="para"></p>
+    </div>
+
+    <h1>GeeksforGeeks</h1>
+    <h2>Onmouse hover Event Attribute</h2>
+    <p onmouseover="alert('Mouseover event complete')">computer science portal</p>
+
+
+    <h1>GeeksforGeeks</h1>
+    <h2>Onchange Event Attribute</h2>
+    <p>Choose subject</p>
+    <select id="change" onchange="change()">
+        <option value="Datastructure">Datastructure</option>
+        <option value="Framework">Framework</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="Operating System">Operating System</option>
+    </select>
+    <p id="selsub"></p>
+
+    <h1>GeeksforGeeks</h1>
+    <h2>HTML DOM onfocus events</h2>
+    <form  action="#">
+        <input id="fromchn" type="text" value="caption">
+    </form>
+
+    <h1>DOM Manipulation</h1>
+    <ul>
+        <li class="items">one</li>
+        <li class="items">two</li>
+        <li class="items">three</li>
+        <li class="items">four</li>
+    </ul>
+
+    <script>
+        // document.getElementById('cat').onclick =function() {
+        //     alert('cat')
+        // }
+
+        // using Event listners --> better approach
+        // document.getElementById('cat').addEventListener('click', function(e) {
+        //     // alert('cat clicked events')
+        //     console.log(e.timeStamp/1000);
+        // }, false)
+
+        // document.getElementById('images').addEventListener('click', function(e) {
+        //     console.log("Clicked inside the ul");
+        // }, false)
+
+        // document.getElementById('cat').addEventListener('click', function(e) {
+        //     console.log("cat clicked");
+        //     // e.stopPropagation    only bottom element print 
+        // }, false)
+
+        // document.getElementById('google').addEventListener('click', function(e) {
+        //     e.preventDefault();90
+        //     console.log("Google clicked");
+        //     console.log(e);
+        // })
+
+        // Remove a image just clicked
+        document.querySelector('#images').addEventListener('click', function(e) {
+            console.log(e.target.tagName);
+            if (e.target.tagName == 'IMG') {
+                console.log(e.target.id);
+                let removeIt = e.target.parentNode;
+                // console.log(removeIt);
+                removeIt.remove();
+            }
+
+            // console.log(e.target.parentNode);
+            // let removeIt = e.target.parentNode;
+            // removeIt.remove();
+            // removeIt.parentNode.removeChild(removeIt);
+        })
+        function myfun() {
+            document.getElementById('btn').innerText = "Namaste Shubham"
+            document.getElementById('para').innerText = "Lal bhagcha raja ke jai"
+        }
+
+        document.getElementById('btn').onclick = myfun;
+        document.getElementById('para').onclick = myfun;
+
+        // onchange
+        function change() {
+            let x = document.getElementById('change').value;
+            document.getElementById('selsub').innerText = "Selected subject: "+ x;
+        }
+
+        // onfocus 
+        document.getElementById('fromchn').onfocus = function() {
+            document.getElementById('fromchn').style.background = "green";
+        }
+
+        // selector
+        const txt = document.getElementsByClassName('items')
+        const convertertxt = Array.from(txt)
+        convertertxt.forEach((val) => {
+            val.style.color = 'red';
+        })
+    </script>
+</body>
+</html>
